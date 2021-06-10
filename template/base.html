@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+{% load static%}
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>Travel Responsive Web Template</title>
+        <meta name="description" content="">
+<!-- 
+Travel Template
+http://www.templatemo.com/tm-409-travel
+-->
+        <meta name="viewport" content="width=device-width">
+		<meta name="author" content="templatemo">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700,600,300' rel='stylesheet' type='text/css'>
+        
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+        <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+        <link rel="stylesheet" href="{% static 'css/templatemo_misc.css' %}">
+        <link rel="stylesheet" href="{% static 'css/templatemo_style.css' %}">
+
+        <script src="{% static 'js/vendor/modernizr-2.6.1-respond-1.1.0.min.js' %}"></script>
+        <style>.notification {
+  color: white;
+  text-decoration: none;
+  padding: 0px 26px;
+  position: relative;
+  display: inline-block;
+  border-radius: 2px;
+}
+
+        .notification .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background: red;
+  color: white;
+}</style>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+
+        <div class="site-header">
+            <div class="container">
+                <div class="main-header">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6 col-xs-10">
+                            <div class="logo">
+                                <a href="#">
+                                    <img src="{% static 'images/logo.png' %}" alt="travel html5 template" title="travel html5 template">
+                                </a>
+                            </div> <!-- /.logo -->
+                        </div> <!-- /.col-md-4 -->
+                        <div class="col-md-8 col-sm-6 col-xs-2">
+                            <div class="main-menu">
+                                <ul class="visible-lg visible-md">
+                                    <li class="active"><a href="{% url 'list' %}">Home</a></li>
+                                    
+                                    <li><a href="{% url 'create' %}">Contact</a></li>
+                                   {% if user.is_authenticated %}
+                                        {% if user.is_superuser %}
+                                            <li><a href="{% url 'adminview' %}">Admin Panal</a></li>
+                                        {% endif%}
+                                        <li><a href="{% url 'inbox'%}" class="notification">
+                                            <span>Inbox</span>
+                                            <span class="badge">{{repliesc}}</span>
+                                            </a></li>
+                                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                                    {% else %}
+                                    <li><a href="{% url 'login' %}">Login</a></li>
+                                    <li><a href="{% url 'signup' %}">Signup</a></li>
+                                    {% endif %}
+                                </ul>
+                                <a href="#" class="toggle-menu visible-sm visible-xs">
+                                    <i class="fa fa-bars"></i>
+                                </a>
+                            </div> <!-- /.main-menu -->
+                        </div> <!-- /.col-md-8 -->
+                    </div> <!-- /.row -->
+                </div> <!-- /.main-header -->
+                <div class="row">
+                    <div class="col-md-12 visible-sm visible-xs">
+                        <div class="menu-responsive">
+                            <ul>
+                                <li class="active"><a href="{% url 'list' %}">Home</a></li>
+                                <li><a href="{% url 'create' %}">Contact</a></li>
+                                <li><a href="{% url 'login' %}">Login</a></li>
+                            </ul>
+                        </div> <!-- /.menu-responsive -->
+                    </div> <!-- /.col-md-12 -->
+                </div> <!-- /.row -->
+            </div> <!-- /.container -->
+        </div> <!-- /.site-header -->
+    {% block content%}
+    {% endblock %}
+
+	
+
+        <div class="site-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        <div class="footer-logo">
+                            <a href="index.html">
+                                <img src="{% static 'images/logo.png' %}" alt="">
+                            </a>
+                        </div>
+                    </div> <!-- /.col-md-4 -->
+                    <div class="col-md-4 col-sm-4">
+                        <div class="copyright">
+                            <span>
+                            	
+                                Copyright &copy; 2020
+                            
+                            
+                            <!--
+                            | Design: <a rel="nofollow" href="http://www.templatemo.com" target="_parent">templatemo</a>
+                            -->
+                            
+                            </span>
+                        </div>
+                    </div> <!-- /.col-md-4 -->
+                    <div class="col-md-4 col-sm-4">
+                        <ul class="social-icons">
+                            <li><a href="#" class="fa fa-facebook"></a></li>
+                            <li><a href="#" class="fa fa-twitter"></a></li>
+                            <li><a href="#" class="fa fa-linkedin"></a></li>
+                            <li><a href="#" class="fa fa-flickr"></a></li>
+                            <li><a href="#" class="fa fa-rss"></a></li>
+                        </ul>
+                    </div> <!-- /.col-md-4 -->
+                </div> <!-- /.row -->
+            </div> <!-- /.container -->
+        </div> <!-- /.site-footer -->
+
+        <script src="{% static 'js/vendor/jquery-1.11.0.min.js' %}"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+        <script src="{% static 'js/bootstrap.js' %}"></script>
+        <script src="{% static 'js/plugins.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+        <!-- templatemo 409 travel -->  
+    </body>
+</html>

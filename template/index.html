@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}
+
+        <div class="flexslider" style="margin-top:11%">
+            <ul class="slides">
+                <li>
+                    <div class="overlay"></div>
+                    <img src="{% static 'images/buddhaparkText1_Sitka.png'%}" alt="Special 1">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-5 col-lg-4">
+                                <div class="flex-caption visible-lg">
+                                    <h3 class="title">Ravangle Sikkim</h3>
+                                    <p>The Buddha Park of Ravangla, also known as <span class="blue">Tathagata Tsal</span>, is situated near Rabong (Ravangla) in South Sikkim district, Sikkim, India.</p>
+                                    <a href="{% url 'destination' pk=4 %}" class="slider-btn">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="overlay"></div>
+                    <img src="{% static 'images/buddhaparkText1_Sitka.png'%}" alt="Special 2">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-5 col-lg-4">
+                                <div class="flex-caption visible-lg">
+                                    <h3 class="title">Gurudongmar Lake</h3>
+                                    <p><span class="blue">Gurudongmar Lake</span> is one of the highest lakes in the world and in India, located at an altitude of 5,430 m (17,800 ft), in the North Sikkim district. It is considered sacred by Buddhists, Sikhs and Hindus.</p>
+                                    <a href="{% url 'destination' pk=2 %}" class="slider-btn">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="overlay"></div>
+                    <img src="{% static 'images/buddhaparkText1_Sitka.png'%}" alt="Special 3">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-5 col-lg-4">
+                                <div class="flex-caption visible-lg">
+                                    <h3 class="title">Tsomgo Lake</h3>
+                                    <p><span class="blue">Tsomgo Lake</span>, also known as Tsongmo Lake or Changu Lake, is a glacial lake in the East Sikkim district of the Indian state of Sikkim.</p>
+                                    <a href="#" class="slider-btn">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div> <!-- /.flexslider -->
+
+        
+        
+        <div class="container">
+            <div class="row">
+                <div class="our-listing owl-carousel">
+                    {% for d in destinations %}
+                        <div class="list-item">
+                            <div class="list-thumb">
+                                <div class="title">
+                                    <h4>{{d.name}}</h4>
+                                </div>
+                                <img src="{% static d.image %}" alt="destination 1">
+                            </div> <!-- /.list-thumb -->
+                            <div class="list-content">
+                                <h5>{{d.address}}</h5>
+                                <span>{{d.description}}</span>
+                                <a href="{%url 'destination' pk=d.pk%}" class="price-btn">Read More.</a>
+                            </div> <!-- /.list-content -->
+                        </div> <!-- /.list-item -->
+                    {% endfor %}
+                   
+                </div> <!-- /.our-listing -->
+            </div> <!-- /.row -->
+        </div> <!-- /.container -->
+
+		<div class="middle-content"></div>
+
+        <div class="partner-list">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2 col-sm-4 col-xs-6">
+                        <div class="partner-item">
+                            <img src="{% static 'images/partners/partner1.png' %}" alt="">
+                        </div> <!-- /.partner-item -->
+                    </div> <!-- /.col-md-2 -->
+                    <div class="col-md-2 col-sm-4 col-xs-6">
+                        <div class="partner-item">
+                            <img src="{% static 'images/partners/partner2.png' %}" alt="">
+                        </div> <!-- /.partner-item -->
+                    </div> <!-- /.col-md-2 -->
+                    <div class="col-md-2 col-sm-4 col-xs-6">
+                        <div class="partner-item">
+                            <img src="{% static 'images/partners/partner3.png' %}" alt="">
+                        </div> <!-- /.partner-item -->
+                    </div> <!-- /.col-md-2 -->
+                    <div class="col-md-2 col-sm-4 col-xs-6">
+                        <div class="partner-item">
+                            <img src="{% static 'images/partners/partner1.png' %}" alt="">
+                        </div> <!-- /.partner-item -->
+                    </div> <!-- /.col-md-2 -->
+                    <div class="col-md-2 col-sm-4 col-xs-6">
+                        <div class="partner-item">
+                            <img src="{% static 'images/partners/partner2.png' %}" alt="">
+                        </div> <!-- /.partner-item -->
+                    </div> <!-- /.col-md-2 -->
+                    <div class="col-md-2 col-sm-4 col-xs-6">
+                        <div class="partner-item last">
+                            <img src="{% static 'images/partners/partner3.png' %}" alt="">
+                        </div> <!-- /.partner-item -->
+                    </div> <!-- /.col-md-2 -->
+                </div> <!-- /.row -->
+            </div> <!-- /.container -->
+        </div> <!-- /.partner-list -->
+
+	{% endblock %}

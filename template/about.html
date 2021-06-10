@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content%}
+
+        <div class="page-top mt-5" id="templatemo_about" style="background: url('{% static object.image %}');background-repeat: no-repeat;background-size: cover;position: absolute;height: 100%;z-index:-1; opacity:0.8;">
+
+        </div> <!-- /.page-header -->
+        {% if user.is_authenticated%}
+            <div class="card" style="height:550px; background:#fff; z-index:1; position:absolute;width:400px;top:240px;right:50px;opacity:0.9">
+                    <h4 style="font-size:26px; margin:40px">Book A Trip</h4>
+                    <div style="padding-left:20px;padding-right:20px">
+                        <form name="contactform" id="contactform" method="post">
+                            {% crispy form %}
+                        </form>
+                    </div>
+            </div>
+        {% endif%}
+
+        <div class="middle-content" style="margin-top:800px">
+            <div class="container">
+            
+                
+                        <div class="widget-item ">
+                            <h3 class="widget-title" style=" text-decoration: underline; text-align:center">{{object.name}}</h3>
+                         
+                            <h4 class="consult-title">{{object.address}}</h4>
+                                <p style="font-size:16px">{{object.text | safe}}</p>
+                        </div> <!-- /.widget-item -->
+                    </div> <!-- /.col-md-4 -->
+
+                
+            </div> <!-- /.container -->
+        </div> <!-- /.middle-content -->
+
+{% endblock %}

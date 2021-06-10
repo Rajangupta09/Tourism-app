@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content%}
+
+        <div class="page-top" id="templatemo_contact">
+        </div> <!-- /.page-header -->
+
+        <div class="contact-page">
+            <div class="container">
+                <div class="row">
+                   
+                    <div class="col-md-8 offset-md-4 col-sm-6">
+                        <h3 class="widget-title">Contact Us</h3>
+                        <div class="contact-form">
+                            <form name="contactform" id="contactform" method="post">
+                               {% csrf_token %}
+                                {% crispy form %}
+                            </form>
+                        </div> <!-- /.contact-form -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+{% endblock %}

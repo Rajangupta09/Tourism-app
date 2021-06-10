@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content%}
+<style>
+    h4{
+        font-weight:800;
+    }
+</style>
+     
+
+        <div class="contact-page">
+            <div class="container">
+                <div class="row mt-5">
+                    <div class="offset-2">
+                        <hr>
+                        <h4 class="widget-title">Messages</h4>
+                        {% for r in replies%}
+                            <div class="offset-2">
+                                <span class="text-secondary">{{r.message.message}}</span><br />
+                                <span>{{r.reply}}</span>
+                            </div>
+                        {% endfor %}
+                        <hr />
+                            <h4 class="widget-title">Approved Tour</h4>
+                            {% for i in tours %}
+                                {% if i.approve == True %}
+                                    <span class="text-secondary">Tour approved for {{i.people}} people to {{i.destination.name}}</span><br />
+                                    <span>Arriving date - {{i.datefrom}}</span>
+                                {% endif %}
+                            {% endfor %}
+                            <br /><h4 class="widget-title">Rejected Tour</h4>
+                            <hr />
+                            {% for i in tours %}
+                                {% if i.approve == False %}
+                                    <span class="text-secondary">Tour Rejected for {{i.people}} people to {{i.destination.name}}</span><br />
+                                    <span>Arriving date - {{i.datefrom}}</span>
+                                {% endif %}
+                            {% endfor %}
+                            <br / ><h4 class="widget-title">Pending Tour</h4>
+                            <hr />
+                            {% for i in tours %}
+                                {% if i.approve == None %}
+                                    <span class="text-secondary">Tour Pending for {{i.people}} people to {{i.destination.name}}</span><br />
+                                    <span>Arriving date - {{i.datefrom}}</span>
+                                {% endif %}
+                            {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+{% endblock %}
