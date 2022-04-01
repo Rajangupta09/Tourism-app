@@ -36,3 +36,7 @@ class Reply(models.Model):
     message = models.ForeignKey(Contact, on_delete=models.CASCADE)
     reply = models.TextField()
     read = models.BooleanField(default=False)
+    
+class Details(models.Model):
+    id = models.IntegerField(_("Report ID"), primary_key=True)
+    name = models.CharField(_("Name"), max_length=100)

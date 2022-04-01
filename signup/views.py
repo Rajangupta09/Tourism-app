@@ -189,3 +189,17 @@ def inbox(request):
     tours = Tour.objects.filter(user = request.user)
     print(tours)
     return render(request, 'inbox.html', {'replies' : replies, 'tours': tours})
+
+
+class VerifyHome(TemplateView):
+    template_name = 'template.html'
+    def get_context_data(self, **kwargs):
+        id = kwargs['id']
+        context = super().get_context_data(**kwargs)
+        t = Details.objects.filter(id = id)
+        if t.count() > 0:
+            context["name"] = t.last()
+        else:
+            context["name"] = None
+        return context
+    
